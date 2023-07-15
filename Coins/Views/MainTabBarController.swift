@@ -21,7 +21,7 @@ class MainTabBarController: UITabBarController {
         let secondViewController = UIViewController()
         secondViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "dollarsign.arrow.circlepath"), tag: 1)
         
-        let arbitrageViewController = UIViewController()
+        let arbitrageViewController = CryptoTableViewController()
         let navigationController = UINavigationController(rootViewController: arbitrageViewController)
         navigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "clock.arrow.2.circlepath"), tag: 2)
         
