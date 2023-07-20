@@ -16,18 +16,19 @@ class MainTabBarController: UITabBarController {
         tabBar.barTintColor = .white
         
         let firstViewController = UIViewController()
-        firstViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "dollarsign.square"), tag: 0)
+        firstViewController.tabBarItem = UITabBarItem(title: "First", image: UIImage(systemName: "dollarsign.square"), tag: 0)
         
         let secondViewController = UIViewController()
-        secondViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "dollarsign.arrow.circlepath"), tag: 1)
+        secondViewController.tabBarItem = UITabBarItem(title: "Second", image: UIImage(systemName: "dollarsign.arrow.circlepath"), tag: 1)
         
-        let arbitrageViewController = CryptoTableViewController()
+        let arbitrageViewController = CoinListViewController()
         let navigationController = UINavigationController(rootViewController: arbitrageViewController)
-        navigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "clock.arrow.2.circlepath"), tag: 2)
+        navigationController.tabBarItem = UITabBarItem(title: "Arbitrage", image: UIImage(systemName: "clock.arrow.2.circlepath"), tag: 2)
         
-        let fourthViewController = UIViewController()
-        fourthViewController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "slider.horizontal.3"), tag: 3)
+        let fourthViewController = MenuViewController()
+        fourthViewController.tabBarItem = UITabBarItem(title: "Menu", image: UIImage(systemName: "slider.horizontal.3"), tag: 3)
         
         viewControllers = [firstViewController, secondViewController, navigationController, fourthViewController]
     }
 }
+

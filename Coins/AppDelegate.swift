@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,9 +14,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
-    }
+           
+           // Delete old Realm files
+           let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
+           let realmURLs = [
+               realmURL,
+               realmURL.appendingPathExtension("lock"),
+               realmURL.appendingPathExtension("note"),
+               realmURL.appendingPathExtension("management")
+           ]
+           for URL in realmURLs {
+               do {
+                   try FileManager.default.removeItem(at: URL)
+               } catch {
+                   // handle error
+               }
+           }
+           
+           // Override point for customization after application launch.
+           return true
+       }
 
     // MARK: UISceneSession Lifecycle
 
