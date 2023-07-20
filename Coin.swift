@@ -12,8 +12,8 @@ class Coin: Object, Decodable {
     @objc dynamic var id: String = ""
     @objc dynamic var symbol: String = ""
     @objc dynamic var name: String = ""
-    @objc dynamic var image: Image? = nil
-    @objc dynamic var marketData: MarketData? = nil
+    @objc dynamic var image: Image?
+    @objc dynamic var marketData: MarketData?
     
     enum CodingKeys: String, CodingKey {
         case id

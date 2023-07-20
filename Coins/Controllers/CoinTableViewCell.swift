@@ -21,6 +21,9 @@ class CoinTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+//        NetworkManager.getCoins { coins in
+//            // Handle the data received from the server here
+//        }
     }
     
     required init?(coder: NSCoder) {
@@ -62,15 +65,28 @@ class CoinTableViewCell: UITableViewCell {
     
     func configure(with coin: Coin) {
         coinNameLabel.text = coin.name
+        coinPriceLabel.text = "\(coin.marketData?.currentPrice?.usd ?? 0)"
+
         // Fetch and set the coin image
-        if let urlString = coin.image?.large, let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let data = data {
-                    DispatchQueue.main.async {
-                        self.coinImageView.image = UIImage(data: data)
-                    }
-                }
-            }.resume()
-        }
+        
+//        NetworkManager.getCoinTickers(id: coin.id) { [weak self] tickers in
+//            guard let tickers = tickers else { return }
+//            let minPrice = tickers.min(by: { $0.last < $1.last })
+//            let maxPrice = tickers.max(by: { $0.last < $1.last })
+//            DispatchQueue.main.async {
+//                self?.coinPriceLabel.text = "Lowest: \(minPrice?.market?.name ?? "") \(minPrice?.last ?? 0) Highest: \(maxPrice?.market?.name ?? "") \(maxPrice?.last ?? 0)"
+//            }
+//        }
+//        coinPriceLabel.text = "\(coin.marketData?.currentPrice?.usd ?? 0)"
+//
+//        if let urlString = coin.image?.large, let url = URL(string: urlString) {
+//            URLSession.shared.dataTask(with: url) { (data, response, error) in
+//                if let data = data {
+//                    DispatchQueue.main.async {
+//                        self.coinImageView.image = UIImage(data: data)
+//                    }
+//                }
+//            }.resume()
+//        }
     }
 }
